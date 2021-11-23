@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 
 const app = express();
-const port = 8081;
 
 app.use(cors());
 
@@ -15,6 +14,4 @@ app.get('/temperature/:id', (req, res) => {
     .then((response) => res.send(response));
 });
 
-app.listen(port, () => {
-  console.log(`SensorTech server at http://localhost:${port}`);
-});
+module.exports = app
