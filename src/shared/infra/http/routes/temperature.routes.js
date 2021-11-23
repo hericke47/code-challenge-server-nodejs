@@ -1,14 +1,10 @@
 const express = require('express')
 const fetch = require('node-fetch');
+const SensorController = require('../../../../modules/temperature/useCases/SensorController')
 
 const temperatureRouter = express.Router();
+const temperatureController = new SensorController()
 
-temperatureRouter.get('/:id', (req, res) => {
-  fetch(
-    `https://temperature-sensor-service.herokuapp.com/sensor/${req.params.id}`
-  )
-    .then((response) => response.json())
-    .then((response) => res.send(response));
-});
+temperatureRouter.get('/:id', temperatureController.handle);
 
 module.exports = temperatureRouter
