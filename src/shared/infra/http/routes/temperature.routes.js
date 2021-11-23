@@ -1,12 +1,9 @@
-const express = require('express');
+const express = require('express')
 const fetch = require('node-fetch');
-const cors = require('cors');
 
-const app = express();
+const temperatureRouter = express.Router();
 
-app.use(cors());
-
-app.get('/temperature/:id', (req, res) => {
+temperatureRouter.get('/:id', (req, res) => {
   fetch(
     `https://temperature-sensor-service.herokuapp.com/sensor/${req.params.id}`
   )
@@ -14,4 +11,4 @@ app.get('/temperature/:id', (req, res) => {
     .then((response) => res.send(response));
 });
 
-module.exports = app
+module.exports = temperatureRouter
