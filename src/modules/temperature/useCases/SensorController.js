@@ -10,8 +10,6 @@ class SensorController {
       id: id,
     });
 
-    console.log(sensor)
-
     return response.json(sensor)
   }
 }
